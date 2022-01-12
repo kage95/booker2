@@ -5,14 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :books,dependent: :destroy
-  has_one_attached:profile_image
+  has_one_attached :profile_image
   
   def get_profile_image(size)
     unless profile_image.attached?
       file_path = Rails.root.join("app/assets/images/no-image.jpeg")
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpeg', content_type: 'image/jpeg')
-    else
-      profile_image.variant(resize:size).processed
     end
+      profile_image.variant(resize: size).processed
   end
 end
