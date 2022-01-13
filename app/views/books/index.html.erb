@@ -1,3 +1,14 @@
+ <% if @book.errors.any?%>
+      <p><%= @book.errors.count %>件のerrorがあります。</p>
+      <ul>
+          <% @book.errors.full_messages.each do |message|%>
+            <li>
+              <%= message %>
+            </li>
+          <%end%>
+      </ul>
+  <%end%>
+
 <div class="container px-5 mb-5">
   <div class="row">
 <!--////////////////////////////////////////////////////////////////////-->

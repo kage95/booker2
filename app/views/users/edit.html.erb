@@ -1,2 +1,45 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+ <% if @user.errors.any?%>
+      <p><%= @user.errors.count %>件のerrorがあります。</p>
+      <ul>
+          <% @user.errors.full_messages.each do |message|%>
+            <li>
+              <%= message %>
+            </li>
+          <%end%>
+      </ul>
+  <%end%>
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-sm-12 col-lg-5 px-sm-0 mx-auto">
+      <h1>User info</h1>
+      
+      <%= form_with model: @user,url:user_path,local:true do |f|%>
+        <div class="field form-group">
+          <label for="user_name">Name</label></br>
+          <%= f.text_field :name,autofocus:true,id:"user_name",placeholder:"name",class:"form-control"%>
+        </div>
+        
+        <div class="field form-group">
+          <label for="image">Image</label></br>
+          <%= f.file_field :profile_image,placeholder:"プロフィール画像",accept:"image/*"%>
+        </div>
+        
+        <div class="field form-group">
+          <label for="introduction">Introduction</label></br>
+          <%= f.text_area :introduction,autofocus:true,id:"introduction",class:"form-control"%>
+        </div>
+        
+        <div class="actions">
+          <%= f.submit "Update User",class:"btn btn-secondary"%>
+        </div>
+      <%end%>
+      
+      
+    </div>
+  </div>
+</div>
+
+
+

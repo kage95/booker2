@@ -1,11 +1,11 @@
 <div class="container px-5 mb-5">
   <div class="row">
 <!--////////////////////////////////////////////////////////////////////-->
-    <%= render 'info', user: @user %>
+    <%= render 'info', user: @login_user %>
     
 <!--////////////////////////////////////////////////////////////////////-->
     <div class="col-8 offset-md-1">
-      <h1>Books detail</h1>
+      <h1>Books</h1>
       <table class="table">
         <thead>
           <tr>
@@ -16,15 +16,15 @@
           </tr>
         </thead>
         <% @books.each do |book|%>
-        <tbody>
-          <td>
-          <%=link_to user_path do %>
-            <%= image_tag book.user.get_profile_image("50x50")%>
-          <%end%>
-          </td>
-          <td><%= link_to book.title,book_path%></td>
-          <td><%=book.body%></td>
-        </tbody>
+          <tbody>
+            <td>
+              <%=link_to user_path do %>
+                <%= image_tag book.user.get_profile_image("50x50")%>
+              <%end%>
+            </td>
+            <td><%= link_to book.title,book_path(book.id) %></td>
+            <td><%=book.body%></td>
+          </tbody>
         <% end%>
       </table>
     </div>
