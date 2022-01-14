@@ -1,4 +1,4 @@
- <div class="col-3">
+ <div class="col-md-3">
       <h1>User info</h1>
       <%= image_tag user.get_profile_image("63x63")%>
       <table class="table">
@@ -23,13 +23,13 @@
       <h1 class="mt-3">New book</h1>
       <%= form_with model: @books,url:books_path,local:true do |f| %>
         <div class="field form-group">
-          <%=f.label :Title%><br/>
-          <%=f.text_field :title,autofocus:true,class:"form-control"%>
+          <%=f.label :title%><br/>
+          <%=f.text_field :title,autofocus:true,class:"form-control book_title"%>
         </div>
         
         <div class="field form-group">
-          <%=f.label :Opinion%><br/>
-          <%=f.text_field :body,autofocus:true,class:"form-control"%>
+          <%=f.label :opinion%><br/>
+          <%=f.text_field :body,autofocus:true,class:"form-control book_body"%>
         </div>
         
         <div class="actions">
